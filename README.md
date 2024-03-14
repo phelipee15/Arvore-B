@@ -22,5 +22,17 @@
             <br>
             Execute o comando <code>make</code> e execute o programa.
         </p>
+        <h3>Slides:</h3>
+        <p>
+            <a> https://docs.google.com/presentation/d/1dIXuHp3FHTbay6uv3gVWN2SViT3WVfuLt-HJLw_8AfE/</a>
+        </p>
+        <h3>Referências:</h3>
+        <p>
+            <a>https://www.geeksforgeeks.org/introduction-of-b-tree-2/</a>
+            <br>
+            <a>https://www.javatpoint.com/b-tree-visualization/</a>
+            <br>
+            Projeto de Algoritmos, Implementações em Pascal e C - Nivio Ziviani
+        </p>
     </div>
 </div>
