@@ -40,7 +40,7 @@ int tamanho(Arvb *arv) { // Retorna o tamanho da Página
 #pragma region Funções de Inserção
 
 void dividir(Arvb *origem, Arvb *destino) { // Recebe a página e divide os elementos na metade com outra página
-    int i = METADE+1;
+    long i = METADE+1;
     for(; i < ORDEM-1; i++){
         destino->filhos[(destino->tamanho)] = origem->filhos[i];
         origem->filhos[i] = NULL;
@@ -50,19 +50,19 @@ void dividir(Arvb *origem, Arvb *destino) { // Recebe a página e divide os elem
     origem->tamanho = ORDEM - METADE - 1;
 }
 
-void swap(int *a,int *b) { // Trocar o valor de A por B e vise-versa
-    int c = *a;
+void swap(long *a,long *b) { // Trocar o valor de A por B e vise-versa
+    long c = *a;
     *a = *b;
     *b = c;
 }
  
-void inserirOrd(Arvb *arv, int item) { // Insere os itens de forma ordenada
-    int status = 0; // Informa se ja foi feita a troca
-    int guardado = 0; // Guarda o número
+void inserirOrd(Arvb *arv, long item) { // Insere os itens de forma ordenada
+    long status = 0; // Informa se ja foi feita a troca
+    long guardado = 0; // Guarda o número
     if (vazia(arv)) {
         arv->itens[arv->tamanho] = item;
     } else {
-        for (int i = 0; i <= arv->tamanho; i++) {
+        for (long i = 0; i <= arv->tamanho; i++) {
             if (status == 0) {
                 if (item==arv->itens[i]) {
                     arv->tamanho--;
@@ -99,7 +99,7 @@ int buscabinariaFilho(Arvb *arv, Arvb *filho, int inicio, int fim) { // Buscar a
     }
 }
 
-int buscaProximo(Arvb *arv, int item, int inicio, int fim) { // Retorna a busca da posição de onde se encontra o item
+int buscaProximo(Arvb *arv, long item, int inicio, int fim) { // Retorna a busca da posição de onde se encontra o item
     if (inicio == fim) {
         if(arv->itens[inicio] > item)
             return inicio;
@@ -143,7 +143,7 @@ void split(Arvb *arv, Arvb *pai) { // Separa os itens da Árvore(Página) e reog
     }
 }
 
-void inserir(Arvb *arv, Arvb *pai, int item) { // Inserir um item na Árvore
+void inserir(Arvb *arv, Arvb *pai, long item) { // Inserir um item na Árvore
     if (vaziaOrdem(arv)) {
         printf("Nao Inicializada\n");
     } else {
@@ -163,7 +163,7 @@ void inserir(Arvb *arv, Arvb *pai, int item) { // Inserir um item na Árvore
 
 #pragma region Funções de Pesquisa
 
-int buscarItemPag(Arvb *arv, int item, int inicio, int fim) { // Retorna se o item está presente na Página
+int buscarItemPag(Arvb *arv, long item, int inicio, int fim) { // Retorna se o item está presente na Página
     if (fim >= inicio) {
         int meio = (inicio + fim)/2;
         if (arv->itens[meio] == item)
@@ -176,11 +176,11 @@ int buscarItemPag(Arvb *arv, int item, int inicio, int fim) { // Retorna se o it
     return -1;
 }
 
-int possui(Arvb *arv, int item) {
+int possui(Arvb *arv, long item) {
     return buscarItemPag(arv, item, 0, arv->tamanho-1)!=-1?1:0;
 }
 
-int buscarProxFilho(Arvb *arv, int item, int inicio, int fim) { // Retorna a busca da posição de onde se encontra o filho para procurar o item
+int buscarProxFilho(Arvb *arv, long item, int inicio, int fim) { // Retorna a busca da posição de onde se encontra o filho para procurar o item
     if (fim == inicio) {
         if(arv->itens[inicio] > item)
             return inicio;
@@ -195,7 +195,7 @@ int buscarProxFilho(Arvb *arv, int item, int inicio, int fim) { // Retorna a bus
     }
 }
 
-void pesquisa(Arvb *arv, int item) { // Retorna a Árvore(Página) onde se encontra o item
+void pesquisa(Arvb *arv, long item) { // Retorna a Árvore(Página) onde se encontra o item
     while (arv) {
         if (vaziaOrdem(arv)) {
             printf("Arvore nao iniciada\n");
@@ -301,7 +301,7 @@ void underSplit(Arvb *arv, Arvb *pai) { // Faz o inverso do split
     
 }
 
-void substituir(Arvb *arv, int *item, Arvb *pai) { // Caso precise apagar um item de uma Página que possua filhos, vai substituir o item com número mais próximo(sucessor)
+void substituir(Arvb *arv, long *item, Arvb *pai) { // Caso precise apagar um item de uma Página que possua filhos, vai substituir o item com número mais próximo(sucessor)
     if (vaziaOrdem(arv->filhos[0])) {
         swap(&(arv->itens[arv->tamanho-1]), item);
         arv->tamanho--;
@@ -312,10 +312,10 @@ void substituir(Arvb *arv, int *item, Arvb *pai) { // Caso precise apagar um ite
         underSplit(arv, pai);
 }
 
-int removerItem(Arvb *arv, int item) { // Remove o item da Página
-    int status = 0;
+int removerItem(Arvb *arv, long item) { // Remove o item da Página
+    long status = 0;
     if (vaziaOrdem(arv->filhos[0])) {
-        for (int i = 0; i < arv->tamanho; i++) {
+        for (long i = 0; i < arv->tamanho; i++) {
             if (arv->itens[i] == item) { // Coloca o item no final da Página e diminui o tamanho dela
                 swap(&(arv->itens[i]), &(arv->itens[i+1]));
                 status = 1;
@@ -327,7 +327,7 @@ int removerItem(Arvb *arv, int item) { // Remove o item da Página
     return status;
 }
 
-void remover(Arvb *arv, Arvb *pai, int item) { // Remover um item da Árvore
+void remover(Arvb *arv, Arvb *pai, long item) { // Remover um item da Árvore
     if (vaziaOrdem(arv)) {
         printf("arvore nao inicida ainda\n");
     } else {
@@ -337,7 +337,7 @@ void remover(Arvb *arv, Arvb *pai, int item) { // Remover um item da Árvore
             if (vaziaOrdem(arv->filhos[0])) { // Caso ela nao possua filhos
                removerItem(arv, item) ? printf("removeu\n"):printf("nao existe\n");
             } else {
-                for (int i = 0; i < arv->tamanho; i++) {
+                for (long i = 0; i < arv->tamanho; i++) {
                     if(item == arv->itens[i]){ // Executa a função de troca
                         substituir(arv->filhos[i], &(arv->itens[i]), arv);
                         break;
@@ -443,36 +443,39 @@ void salvarArvore(Arvb *arv, FILE *file) { // Função para salvar a Árvore B e
             salvarArvore(arv, file);
     }
     fprintf(file, "%d(%d)\n", arv->tamanho, !vaziaOrdem(arv->filhos[0]));
-    for (int i = 0; i < arv->tamanho; i++) {
+    for (long i = 0; i < arv->tamanho; i++) {
         fprintf(file, "%d\n", arv->itens[i]);
     }
-    for (int i = 0; i < arv->tamanho + 1; i++) {
+    for (long i = 0; i < arv->tamanho + 1; i++) {
         salvarArvore(arv->filhos[i], file);
     }
 }
 
 void carregarArvore(Arvb *arv, FILE *file) { // Função para carregar a Árvore B de um arquivo
-    int tamanho, tem_filhos;
+    long tamanho, tem_filhos;
     if (fscanf(file, "%d(%d)\n", &tamanho, &tem_filhos) == EOF) {
         arv = NULL;
         return;
     }
     arv->tamanho = tamanho;
-    for (int i = 0; i < arv->tamanho; i++) {
+    for (long i = 0; i < arv->tamanho; i++) {
         fscanf(file, "%d", &(arv->itens[i]));
     }
     if (tem_filhos) {
-        for (int i = 0; i < tamanho + 1; i++) {
+        for (long i = 0; i < tamanho + 1; i++) {
             arv->filhos[i] = criarArv();
             carregarArvore(arv->filhos[i], file);
         }
     }
 }
 
-
 #pragma endregion
 
 #pragma region Função Menu
+
+long randomLong(long max) {
+    return (long)((double)rand() / ((double)RAND_MAX + 1) * (max + 1));
+}
 
 void menu(char *endereco) { // Função Menu
     char escolha = '0';
@@ -495,18 +498,18 @@ void menu(char *endereco) { // Função Menu
 
             case '1':
                 printf("Digite um numero:\n");
-                int numero;
+                long numero;
                 scanf("%d", &numero);
                 inserir(raiz, NULL, numero);
                 break;
             
             case '2':
                 printf("Digite a quantidade de numeros\n");
-                int quantidade;
+                long quantidade;
                 scanf("%d", &quantidade);
                 srand(time(NULL));
-                for (int i = 1; i < quantidade; i++) {
-                    inserir(raiz, NULL, rand()%(i*10));
+                for (long i = 1; i < quantidade; i++) {
+                    inserir(raiz, NULL, randomLong(i * 10));
                 }
                 break;
             
@@ -516,14 +519,14 @@ void menu(char *endereco) { // Função Menu
             
             case '4':
                 printf("Digite o numero que quer pesquisar\n");
-                int pesquisar;
+                long pesquisar;
                 scanf("%d", &pesquisar);
                 pesquisa(raiz, pesquisar);
                 break;
             
             case '5': 
                 printf("Digite o item para ser removido\n");
-                int item;
+                long item;
                 scanf("%d", &item);
                 remover(raiz, NULL, item);
                 break;
