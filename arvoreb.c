@@ -92,9 +92,9 @@ int buscabinariaFilho(Arvb *arv, Arvb *filho, int inicio, int fim) { // Buscar a
     } else {
         int meio = (inicio + fim)/2;
         if (arv->filhos[meio]->itens[0] < filho->itens[0]){
-            return buscabinariaFilho(arv, filho, meio+1, fim);
-        } else {
             return buscabinariaFilho(arv, filho, inicio, meio);
+        } else {
+            return buscabinariaFilho(arv, filho, meio+1, fim);
         }
     }
 }
