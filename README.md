@@ -24,15 +24,15 @@
         </p>
         <h3>Slides:</h3>
         <p>
-            <a> https://docs.google.com/presentation/d/1dIXuHp3FHTbay6uv3gVWN2SViT3WVfuLt-HJLw_8AfE/</a>
+            <a href="https://docs.google.com/presentation/d/1dIXuHp3FHTbay6uv3gVWN2SViT3WVfuLt-HJLw_8AfE/">https://docs.google.com/presentation/d/1dIXuHp3FHTbay6uv3gVWN2SViT3WVfuLt-HJLw_8AfE/</a>
         </p>
         <h3>Referências:</h3>
         <p>
-            <a>https://www.geeksforgeeks.org/introduction-of-b-tree-2/</a>
+            <a href="https://www.geeksforgeeks.org/introduction-of-b-tree-2/">Introduction of B-Tree. Disponível em: https://www.geeksforgeeks.org/introduction-of-b-tree-2/</a>
             <br>
-            <a>https://www.javatpoint.com/b-tree-visualization/</a>
+            <a href="https://www.javatpoint.com/b-tree-visualization/">b-tree-visualization - Javatpoint. Disponível em: https://www.javatpoint.com/b-tree-visualization/</a>
             <br>
-            Projeto de Algoritmos, Implementações em Pascal e C - Nivio Ziviani
+            ZIVIANI, Nivio. Projeto de Algoritmos com Implementações em Pascal e C. 3. ed. São Paulo: Cengage, 2010.
         </p>
     </div>
 </div>
